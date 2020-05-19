@@ -15,6 +15,7 @@ long val = 0;
 long val2 = 0;
 
 boolean auto_mode = false; //true
+boolean on_off = false;
 
 int sensor1 = A0;
 int sensor2 = D2;
@@ -58,6 +59,13 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.print((char)payload[i]);
   }
   Serial.println();
+  if((char)payload[0] == '5'){
+    on_off = true;
+    }
+  else if((char)payload[0] == '4'){
+    on_off = false;
+    }
+    
   if((char)payload[0] == '3'){
     auto_mode = true;
     return;
@@ -139,8 +147,8 @@ void loop() {
         digitalWrite(BUILTIN_LED, LOW);
         delay(100);
         digitalWrite(BUILTIN_LED, HIGH);
+
         
-//      return;
       }
     // put something here when in manual mode
 //    snprintf (msg, 75, "aina really love pang #%ld", value);
