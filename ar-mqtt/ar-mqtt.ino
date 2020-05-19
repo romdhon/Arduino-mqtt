@@ -147,7 +147,12 @@ void loop() {
         digitalWrite(BUILTIN_LED, LOW);
         delay(100);
         digitalWrite(BUILTIN_LED, HIGH);
-
+        if(on_off == true){
+          digitalWrite(relay, LOW);
+          }
+        else{
+          digitalWrite(relay, HIGH);
+          }
         
       }
     // put something here when in manual mode
